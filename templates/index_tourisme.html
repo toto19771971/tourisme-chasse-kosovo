@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bienvenue dans Skender Land</title>                       
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* ---- TITRE PRINCIPAL ---- */
+        .main-title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #2c3e50;
+            text-transform: uppercase;
+        }
+
+        /* ---- CARROUSEL ---- */
+        .carousel-container {
+            max-width: 90%; /* Réduit la largeur des images */
+            margin: 0 auto; /* Centre le carrousel */
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: 500px; /* Légère réduction de hauteur */
+            object-fit: cover;
+            border: 8px solid #2c3e50; /* Ajout du cadre */
+            border-radius: 10px; /* Bords arrondis */
+        }
+
+        /* ---- FLÈCHES ---- */
+        .carousel-control-prev, .carousel-control-next {
+            width: 8%;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background-size: 60%;
+        }
+
+        .carousel-control-prev:hover .carousel-control-prev-icon,
+        .carousel-control-next:hover .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* ---- TEXTE DE PRÉSENTATION ---- */
+        .presentation {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 20px;
+            color: #34495e;
+            line-height: 1.8;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            max-width: 80%;
+            margin: 30px auto;
+        }
+
+        /* ---- BOUTON INSCRIPTION ---- */
+        .btn-inscription {
+            display: block;
+            width: 250px;
+            margin: 30px auto;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            background-color: #27ae60;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-inscription:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TITRE PRINCIPAL -->
+    <h1 class="main-title">Bienvenue dans Skender Land</h1>
+
+    <!-- Conteneur du Carrousel -->
+    <div class="container mt-4 carousel-container">
+        
+        <!-- Carrousel d'images -->
+        <div id="carouselTourisme" class="carousel slide" data-bs-ride="carousel">
+            
+            <div class="carousel-inner">
+                <!-- Première image statique pour initialiser le carrousel -->
+                <div class="carousel-item active">
+                    <img src="{{ url_for('static', filename='img1.jpg') }}" class="d-block w-100" alt="Image 1">
+                </div>
+
+                <!-- Boucle pour générer les autres images -->
+                {% for i in range(2, 21) %}
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img{}.jpg'.format(i)) }}" class="d-block w-100" alt="Image {{ i }}">
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Bouton Précédent -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselTourisme" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Précédent</span>
+            </button>
+
+            <!-- Bouton Suivant -->
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselTourisme" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Suivant</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Texte de présentation -->
+    <div class="presentation">
+        <h2>Un voyage unique entre nature et tradition</h2>
+        <p>
+            Bienvenue à Skender Land, un paradis pour les amoureux de la chasse et de la nature sauvage. 
+            Situé au cœur du Kosovo, notre destination offre une expérience authentique entre forêts majestueuses, 
+            vallées verdoyantes et une faune exceptionnelle. Nos guides expérimentés vous accompagnent pour une aventure inoubliable, 
+            où passion et respect de la nature se rencontrent.
+        </p>
+        <p>
+            Mais Skender Land, c’est aussi un territoire riche en histoire et en culture. Découvrez la gastronomie locale, 
+            les villages traditionnels et l’accueil chaleureux des habitants. Que vous soyez chasseur aguerri ou simple voyageur curieux, 
+            notre région saura vous séduire par son charme et son authenticité.
+        </p>
+        <p>
+            Venez explorer, chasser et vivre une expérience unique en pleine nature ! 🦌🏕️
+        </p>
+    </div>
+
+    <!-- Bouton d'inscription -->
+    <a href="{{ url_for('inscription') }}" class="btn-inscription">S'inscrire maintenant</a>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
