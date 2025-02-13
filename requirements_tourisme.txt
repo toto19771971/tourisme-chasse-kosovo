@@ -1,8 +1,3 @@
-tourisme_chasse_kosovo/
-│
-├── app_tourisme.py              # Code principal du site
-├── requirements_tourisme.txt    # Liste des dépendances
-│
-└── templates/
-    ├── index_tourisme.html      # Page d'accueil du site
-    └── formulaire_inscription_tourisme.html  # Formulaire d'inscription
+flask
+gunicorn
+
